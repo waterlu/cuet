@@ -1,0 +1,14 @@
+server:
+  port: 18020
+
+logging:
+  file: /media/lu/new/log/cuet-data-loader.log
+  level: INFO
+
+kafka:
+  broker:
+    address: 10.0.3.200:9092
+  zookeeper:
+    connect: 10.0.3.200:2181
+  topic: test
+  groupId: group-test
