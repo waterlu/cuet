@@ -23,21 +23,26 @@
         <result property="source" column="source" />
         <result property="resumeName" column="resume_name" />
         <result property="introduction" column="introduction" />
+        <result property="education" column="education" />
     </resultMap>
 
-
     <select id="findResumeById" parameterType="int" resultType="Resume" >
-        SELECT id, createTime, updateTime, deleted, name, mobile, userId, gender, birthday, maritalStatus,
-            email, qq, hukou, province, city, zone, workExperience, degree, source, resumeName, introduction
+        SELECT id, create_time, update_time, deleted, name, mobile, user_id, gender, birthday, marital_status,
+            email, qq, hukou, province, city, zone, work_experience, degree, source, resume_name, introduction,
+            education
         FROM resume
         WHERE id = #{id}
     </select>
 
     <insert id="createResume" parameterType="Resume" >
-        INSERT INTO resume (id,  deleted, name, mobile, gender, birthday,
-            email, qq, hukou, province, city, zone,  degree, source, introduction)
-        VALUES (#{id},  #{deleted}, #{name}, #{mobile}, #{gender}, #{birthday},
-             #{email}, #{qq}, #{hukou}, #{province}, #{city}, #{zone},  #{degree},
-            #{source}, #{introduction})
+        <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id" >
+            SELECT currval('resume_id_seq') AS id
+        </selectKey>
+        INSERT INTO resume (id, create_time, update_time, deleted, name, mobile, user_id, gender, birthday,
+            marital_status, email, qq, hukou, province, city, zone, work_experience, degree,
+            source, resume_name, introduction, education)
+        VALUES (nextval('resume_id_seq'), #{createTime}, #{updateTime}, #{deleted}, #{name}, #{mobile}, #{userId}, #{gender}, #{birthday},
+            #{maritalStatus}, #{email}, #{qq}, #{hukou}, #{province}, #{city}, #{zone}, #{workExperience}, #{degree},
+            #{source}, #{resumeName}, #{introduction}, (#{education})::json )
     </insert>
 </mapper>

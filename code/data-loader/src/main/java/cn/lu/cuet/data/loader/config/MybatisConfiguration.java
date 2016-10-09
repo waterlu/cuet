@@ -39,6 +39,9 @@ public class MybatisConfiguration implements TransactionManagementConfigurer{
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource());
         sqlSessionFactoryBean.setTypeAliasesPackage("cn.lu.cuet.data.loader.model");
+//        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+//        configuration.setLogImpl();
+//        sqlSessionFactoryBean.setConfiguration(configuration);
 
         // Paging plugin
         PageHelper pageHelper = new PageHelper();

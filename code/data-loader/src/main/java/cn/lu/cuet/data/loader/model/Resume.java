@@ -1,11 +1,20 @@
 package cn.lu.cuet.data.loader.model;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by lu on 16-10-8.
  */
 public class Resume extends DBModel {
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     // 所属用户
     private Long userId;
@@ -57,6 +66,24 @@ public class Resume extends DBModel {
 
     // 自我介绍
     private String introduction;
+
+    // 教育经历（JSON）
+    private String education;
+
+    private List<Education> educationList = new ArrayList<>();
+
+    public void addEducation(Education education) {
+        educationList.add(education);
+    }
+
+    public void prepare() {
+        education = JSON.toJSONString(educationList, SerializerFeature.PrettyFormat);
+        logger.info("prepare education = " + education);
+    }
+
+    public String getEducation() {
+        return education;
+    }
 
 //    // 求职意向
 //    private Objective objective;
