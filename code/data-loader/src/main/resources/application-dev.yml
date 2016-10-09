@@ -12,3 +12,21 @@ kafka:
     connect: 10.0.3.200:2181
   topic: test
   groupId: group-test
+
+spring:
+  data:
+    elasticsearch:
+      properties:
+        path:
+          home: target/elastic
+        transport:
+          tcp:
+            connect_timeout: 120s
+
+  datasource:
+    url: jdbc:postgresql://10.0.3.200:5432/cuet
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    dbcp:
+      max-active:
