@@ -23,7 +23,8 @@
         <result property="source" column="source" />
         <result property="resumeName" column="resume_name" />
         <result property="introduction" column="introduction" />
-        <result property="education" column="education" />
+        <result property="education" column="education" javaType="cn.lu.cuet.data.loader.model.Education"
+                typeHandler="cn.lu.cuet.data.loader.mybatis.JsonTypeHandler" />
     </resultMap>
 
     <select id="findResumeById" parameterType="int" resultType="Resume" >
