@@ -1,20 +1,42 @@
 package cn.lu.cuet.data.loader.service.impl;
 
-import cn.lu.cuet.data.loader.mapper.ResumeMapper;
-import cn.lu.cuet.data.loader.model.Resume;
+import cn.lu.cuet.data.loader.domain.Resume;
+import cn.lu.cuet.data.loader.repository.ResumeRepository;
 import cn.lu.cuet.data.loader.service.ResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
- * Created by lu on 16-10-8.
+ * Created by mofang on 17/10/16.
  */
+@Service
 public class ResumeServiceImpl implements ResumeService {
 
     @Autowired
-    private ResumeMapper resumeMapper;
+    private ResumeRepository resumeRepository;
 
     @Override
-    public Resume findResumeById(long id) {
-        return resumeMapper.findResumeById(id);
+    public Resume createResume(Resume resume) {
+        return resumeRepository.save(resume);
     }
+
+    @Override
+    public void deleteResume(Resume resume) {
+        resumeRepository.delete(resume);
+    }
+
+    @Override
+    public long count() {
+        return resumeRepository.count();
+    }
+
+    @Override
+    public List<Resume> findByUserId(Long userId) {
+        return resumeRepository.findByUserId(userId);
+    }
+
+
+
 }

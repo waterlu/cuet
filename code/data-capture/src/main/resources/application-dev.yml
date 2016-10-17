@@ -7,8 +7,8 @@ logging:
 
 kafka:
   broker:
-    address: 10.0.3.200:9092
+    address: 127.0.0.1:9092
   zookeeper:
-    connect: 10.0.3.200:2181
+    connect: 127.0.0.1:2181
   topic: test
   messageKey: key

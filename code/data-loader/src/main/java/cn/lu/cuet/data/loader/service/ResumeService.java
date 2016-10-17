@@ -1,13 +1,20 @@
 package cn.lu.cuet.data.loader.service;
 
-import cn.lu.cuet.data.loader.model.Resume;
-import org.springframework.stereotype.Service;
+import cn.lu.cuet.data.loader.domain.Resume;
+
+import java.util.List;
 
 /**
- * Created by lu on 16-10-8.
+ * Created by mofang on 17/10/16.
  */
 public interface ResumeService {
 
-    public Resume findResumeById(long id);
+    Resume createResume(Resume resume);
+
+    void deleteResume(Resume resume);
+
+    long count();
+
+    List<Resume> findByUserId(Long userId);
 
 }
