@@ -1,0 +1,137 @@
+[sense]
+1. create index
+DELETE /resume
+POST /resume
+
+2. create mapping
+PUT /resume
+{
+  "mappings": {
+    "online": {
+      "properties": {
+        "userId": {
+          "type": "long",
+          "store": true,
+          "index": "not_analyzed"
+        },
+        "gender": {
+          "type": "integer",
+          "store": true,
+          "index": "not_analyzed"
+        },
+        "education": {
+          "type": "integer",
+          "store": true,
+          "index": "not_analyzed"
+        },
+        "birthDate": {
+          "type": "date",
+          "store": true,
+          "index": "not_analyzed",
+          "format": "yyyy-MM-dd"
+        },
+        "joinWorkDate": {
+          "type": "date",
+          "store": true,
+          "index": "not_analyzed",
+          "format": "yyyy-MM-dd"
+        },
+        "location": {
+          "type": "string",
+          "store": true,
+          "index": "not_analyzed"
+        },
+        "objectvie": {
+          "type": "nested",
+          "properties": {
+            "jobType": {
+              "type": "integer",
+              "store": true,
+              "index": "not_analyzed"
+            },
+            "status": {
+              "type": "integer",
+              "store": true,
+              "index": "not_analyzed"
+            },
+            "industry": {
+              "type": "integer",
+              "store": true,
+              "index": "not_analyzed"
+            },
+            "location": {
+              "type": "string",
+              "store": true,
+              "index": "not_analyzed"
+            },
+            "category": {
+              "type": "string",
+              "store": true,
+              "index": "not_analyzed"
+            },
+            "position": {
+              "type": "string",
+              "store": true,
+              "index": "analyzed"
+            },
+            "minSalary": {
+              "type": "double",
+              "store": true,
+              "index": "not_analyzed"
+            },
+            "maxSalary": {
+              "type": "double",
+              "store": true,
+              "index": "not_analyzed"
+            }
+          }
+        },
+        "workExperienceList": {
+          "type": "nested",
+          "properties": {
+            "workStartTime": {
+              "type": "string",
+              "store": true,
+              "index": "not_analyzed"
+            },
+            "workEndTime": {
+              "type": "string",
+              "store": true,
+              "index": "not_analyzed"
+            },
+            "company": {
+              "type": "string",
+              "store": true,
+              "index": "not_analyzed"
+            },
+            "category": {
+              "type": "string",
+              "store": true,
+              "index": "not_analyzed"
+            },
+            "position": {
+              "type": "string",
+              "store": true,
+              "index": "analyzed"
+            },
+            "workDesc": {
+              "type": "string",
+              "store": true,
+              "index": "analyzed"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+GET /resume/_mapping
+GET /resume/online/_mapping
+GET /resume/online/_search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
