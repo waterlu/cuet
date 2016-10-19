@@ -102,7 +102,7 @@ PUT /resume
             "company": {
               "type": "string",
               "store": true,
-              "index": "not_analyzed"
+              "index": "not_ analyzed"
             },
             "category": {
               "type": "string",
@@ -135,3 +135,151 @@ GET /resume/online/_search
   }
 }
 
+
+[example]
+DELETE /library
+PUT /library
+{
+  "mappings": {
+    "book": {
+      "properties": {
+        "author": {
+          "type": "object",
+          "properties": {
+            "firstName": {
+              "type": "string"
+            },
+            "lastName": {
+              "type": "string"
+            }
+          }
+        },
+        "characters": {
+          "type": "string"
+        },
+        "copies": {
+          "type": "long",
+          "ignore_malformed": false
+        },
+        "otitle": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "year": {
+          "type": "long",
+          "ignore_malformed": false
+        },
+        "available": {
+          "type": "boolean"
+        },
+        "section": {
+          "type": "long"
+        }
+      }
+    }
+  }
+}
+
+
+
+
+[mofang]
+
+POST /_analyze
+{
+  "analyzer": "jcseg_search",
+  "text": "联想是全球最大的笔记本厂商"
+}
+
+
+DELETE /mofang
+PUT /mofang
+{
+  "mappings": {
+    "resume": {
+      "properties": {
+        "userId": {
+          "type": "long",
+          "index": "no"
+        },
+        "name": {
+          "type": "string",
+          "index": "analyzed",
+          "analyzer": "jcseg_search"
+        },
+        "gender": {
+          "type": "short",
+          "index": "no"
+        },
+        "birthDate": {
+          "type": "date",
+          "index": "no",
+          "format": ["yyyy-MM-dd"]
+        },
+        "education": {
+          "type": "short",
+          "index": "no"
+        },
+        "available": {
+          "type": "boolean",
+          "index": "no"
+        },
+        "objectvie": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "integer",
+              "index": "no"
+            },
+            "category": {
+              "type": "string",
+              "index": "not_analyzed"
+            },
+            "position": {
+              "type": "string",
+              "index": "analyzed",
+              "analyzer": "jcseg_search"
+            },
+            "salary": {
+              "type": "short",
+              "index": "no"
+            },
+            "city": {
+              "type": "string",
+              "index": "not_analyzed"
+            }
+          }
+        },
+        "workExp": {
+          "type": "nested",
+          "properties": {
+            "company": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                },
+                "desc": {
+                  "type": "string",
+                  "index": "analyzed",
+                  "analyzer": "jcseg_search"
+                },
+                "position": {
+                  "type": "string",
+                  "index": "analyzed",
+                  "analyzer": "jcseg_search"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-package cn.lu.cuet.data.loader.domain;
+package cn.lu.cuet.data.loader.entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -6,7 +6,6 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**

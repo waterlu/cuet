@@ -5,6 +5,29 @@ package cn.lu.cuet.util;
  */
 public class Constant {
 
+    public final static int GENDER_FEMALE = 0;
+
+    public final static int GENDER_MALE = 1;
+
+    public final static int GENDER_COUNT = 2;
+
+
+    public final static int EDUCATION_JUNIOR_HIGH_SCHOOL = 1;
+
+    public final static int EDUCATION_TECHNICAL_SCHOOL = 2;
+
+    public final static int EDUCATION_HIGH_SCHOOL = 3;
+
+    public final static int EDUCATION_JUNIOR_COLLEGE = 4;
+
+    public final static int EDUCATION_BACHELOR = 5;
+
+    public final static int EDUCATION_MASTER = 6;
+
+    public final static int EDUCATION_DOCTOR = 7;
+
+    public final static int EDUCATION_COUNT = 8;
+
     //
     public final static int OBJECTIVE_STATUS_SEEK_JOB = 1;
 
@@ -83,5 +106,23 @@ public class Constant {
     public final static int INDUSTRY_OTHERS = 28;
 
     public final static int INDUSTRY_COUNT = 28;
+
+    public final static int SALARY_0_2 = 1;
+
+    public final static int SALARY_2_4 = 2;
+
+    public final static int SALARY_4_6 = 3;
+
+    public final static int SALARY_6_8 = 4;
+
+    public final static int SALARY_8_10 = 5;
+
+    public final static int SALARY_10_15 = 6;
+
+    public final static int SALARY_15_25 = 7;
+
+    public final static int SALARY_25 = 8;
+
+    public final static int SALARY_COUNT = 8;
 
 }

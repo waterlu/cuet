@@ -1,4 +1,4 @@
-package cn.lu.cuet.data.loader.domain;
+package cn.lu.cuet.data.loader.entities;
 
 /**
  * Created by lutiehua on 17/10/16.
@@ -7,9 +7,9 @@ public class CareerObjective {
 
     private Integer status;
 
-    private Double minSalary;
+    private Float minSalary;
 
-    private Double maxSalary;
+    private Float maxSalary;
 
     private String location;
 
@@ -29,19 +29,19 @@ public class CareerObjective {
         this.status = status;
     }
 
-    public Double getMinSalary() {
+    public Float getMinSalary() {
         return minSalary;
     }
 
-    public void setMinSalary(Double minSalary) {
+    public void setMinSalary(Float minSalary) {
         this.minSalary = minSalary;
     }
 
-    public Double getMaxSalary() {
+    public Float getMaxSalary() {
         return maxSalary;
     }
 
-    public void setMaxSalary(Double maxSalary) {
+    public void setMaxSalary(Float maxSalary) {
         this.maxSalary = maxSalary;
     }
 

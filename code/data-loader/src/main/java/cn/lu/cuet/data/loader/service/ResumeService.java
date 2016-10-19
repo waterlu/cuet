@@ -1,6 +1,6 @@
 package cn.lu.cuet.data.loader.service;
 
-import cn.lu.cuet.data.loader.domain.Resume;
+import cn.lu.cuet.data.loader.entities.Resume;
 
 import java.util.List;
 
