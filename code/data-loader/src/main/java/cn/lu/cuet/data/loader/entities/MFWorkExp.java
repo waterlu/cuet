@@ -1,5 +1,6 @@
 package cn.lu.cuet.data.loader.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  */
 public class MFWorkExp {
 
-    private List<MFCompany> companyList;
+    private List<MFCompany> companyList = new ArrayList<>();
 
     public List<MFCompany> getCompanyList() {
         return companyList;

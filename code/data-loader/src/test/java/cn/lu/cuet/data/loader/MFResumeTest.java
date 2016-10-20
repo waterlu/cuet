@@ -5,9 +5,12 @@ import cn.lu.cuet.data.loader.repository.MFResumeRepository;
 import cn.lu.cuet.data.loader.service.ResumeService;
 import cn.lu.cuet.util.Constant;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -17,6 +20,8 @@ import java.util.Map;
 /**
  * Created by mofang on 19/10/16.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = DataLoaderApplication.class)
 public class MFResumeTest {
     private Logger logger = LoggerFactory.getLogger(MFResumeTest.class);
 
@@ -35,11 +40,21 @@ public class MFResumeTest {
         MFCompany company = null;
         long id;
 
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendar = Calendar.getInstance();
+        int year;
+        int month;
+        int day;
+
         // 1
         id = 1;
         resume = new MFResume();
         resume.setAvailable(true);
-        resume.setBirthDate("1992-05-01");
+        year = 1992;
+        month = RandomUtil.getRandom(1, 13);
+        day = RandomUtil.getRandom(1, 30);
+        calendar.set(year, month, day);
+        resume.setBirthDate(formatter.format(calendar.getTime()));
         resume.setEducation(Constant.EDUCATION_HIGH_SCHOOL);
         resume.setGender(Constant.GENDER_MALE);
         resume.setId(id);
@@ -81,8 +96,12 @@ public class MFResumeTest {
         id = 2;
         resume = new MFResume();
         resume.setAvailable(true);
-        resume.setBirthDate("1989-03-01");
-        resume.setEducation(Constant.EDUCATION_HIGH_SCHOOL);
+        year = 1989;
+        month = RandomUtil.getRandom(1, 13);
+        day = RandomUtil.getRandom(1, 30);
+        calendar.set(year, month, day);
+        resume.setBirthDate(formatter.format(calendar.getTime()));
+        resume.setEducation(Constant.EDUCATION_JUNIOR_COLLEGE);
         resume.setGender(Constant.GENDER_MALE);
         resume.setId(id);
         resume.setName("吴川南");
@@ -123,8 +142,12 @@ public class MFResumeTest {
         id = 3;
         resume = new MFResume();
         resume.setAvailable(true);
-        resume.setBirthDate("1987-10-11");
-        resume.setEducation(Constant.EDUCATION_HIGH_SCHOOL);
+        year = 1987;
+        month = RandomUtil.getRandom(1, 13);
+        day = RandomUtil.getRandom(1, 30);
+        calendar.set(year, month, day);
+        resume.setBirthDate(formatter.format(calendar.getTime()));
+        resume.setEducation(Constant.EDUCATION_MASTER);
         resume.setGender(Constant.GENDER_MALE);
         resume.setId(id);
         resume.setName("臧剑超");
@@ -165,8 +188,12 @@ public class MFResumeTest {
         id = 4;
         resume = new MFResume();
         resume.setAvailable(true);
-        resume.setBirthDate("1988-06-20");
-        resume.setEducation(Constant.EDUCATION_HIGH_SCHOOL);
+        year = 1988;
+        month = RandomUtil.getRandom(1, 13);
+        day = RandomUtil.getRandom(1, 30);
+        calendar.set(year, month, day);
+        resume.setBirthDate(formatter.format(calendar.getTime()));
+        resume.setEducation(Constant.EDUCATION_BACHELOR);
         resume.setGender(Constant.GENDER_FEMALE);
         resume.setId(id);
         resume.setName("何碧珠");
@@ -206,6 +233,9 @@ public class MFResumeTest {
         workExp.addCompany(company);                
         resume.setWorkExp(workExp);
         resume = mfResumeRepository.save(resume);
-        logger.info("resume[ + id + ]=" + resume.toString());                                   
+        logger.info("resume[ + id + ]=" + resume.toString());
+
+
+        
     }
 }
