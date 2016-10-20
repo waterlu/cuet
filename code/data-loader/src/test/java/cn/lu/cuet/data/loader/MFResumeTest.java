@@ -387,6 +387,58 @@ public class MFResumeTest {
         workExp.addCompany(company);
         resume.setWorkExp(workExp);
         resume = mfResumeRepository.save(resume);
-        logger.info("resume[ + id + ]=" + resume.toString());        
+        logger.info("resume[ + id + ]=" + resume.toString());   
+        
+        // 9
+        id = 9;
+        resume = new MFResume();
+        resume.setAvailable(true);
+        year = 1993;
+        month = RandomUtil.getRandom(1, 13);
+        day = RandomUtil.getRandom(1, 30);
+        calendar.set(year, month, day);
+        resume.setBirthDate(formatter.format(calendar.getTime()));
+        resume.setEducation(Constant.EDUCATION_BACHELOR);
+        resume.setGender(Constant.GENDER_FEMALE);
+        resume.setId(id);
+        resume.setName("陆梦梦");
+        objective = new MFObjective();
+        objective.setStatus(Constant.OBJECTIVE_STATUS_SEEK_JOB);
+        objective.setPosition("java");
+        objective.setCategory("java");
+        objective.setCity("深圳 - 南山");
+        objective.setSalary(Constant.SALARY_6_8);
+        resume.setObjective(objective);
+        resume.setUserId(id);
+        workExp = new MFWorkExp();
+        resume.setWorkExp(workExp);
+        resume = mfResumeRepository.save(resume);
+        logger.info("resume[ + id + ]=" + resume.toString());     
+        
+        // 10
+        id = 10;
+        resume = new MFResume();
+        resume.setAvailable(true);
+        year = 1980;
+        month = RandomUtil.getRandom(1, 13);
+        day = RandomUtil.getRandom(1, 30);
+        calendar.set(year, month, day);
+        resume.setBirthDate(formatter.format(calendar.getTime()));
+        resume.setEducation(Constant.EDUCATION_BACHELOR);
+        resume.setGender(Constant.GENDER_MALE);
+        resume.setId(id);
+        resume.setName("宗旭");
+        objective = new MFObjective();
+        objective.setStatus(Constant.OBJECTIVE_STATUS_SEEK_JOB);
+        objective.setPosition("项目经理，高级工程师");
+        objective.setCategory("java");
+        objective.setCity("北京 - 丰台");
+        objective.setSalary(Constant.SALARY_25);
+        resume.setObjective(objective);
+        resume.setUserId(id);
+        workExp = new MFWorkExp();
+        resume.setWorkExp(workExp);
+        resume = mfResumeRepository.save(resume);
+        logger.info("resume[ + id + ]=" + resume.toString());           
     }
 }
