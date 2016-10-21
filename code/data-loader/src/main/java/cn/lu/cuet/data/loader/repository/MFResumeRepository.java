@@ -7,4 +7,5 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
  * Created by mofang on 19/10/16.
  */
 public interface MFResumeRepository extends ElasticsearchRepository<MFResume, Long> {
+
 }

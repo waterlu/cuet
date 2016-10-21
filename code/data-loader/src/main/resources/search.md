@@ -1,4 +1,5 @@
-# cuet modified  dev
+
+
 
 ## 搜索元数据
 
@@ -51,6 +52,4 @@ jcseg_search
 | major | 专业 | string | analyzed | match |  | 目前还没有 |
 | unifyEnroll | 是否统招 | boolean | no | 精确匹配 |  | 目前还没有 |
 
-
-
-----------
+---

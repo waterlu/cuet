@@ -413,7 +413,7 @@ public class MFResumeTest {
         workExp = new MFWorkExp();
         resume.setWorkExp(workExp);
         resume = mfResumeRepository.save(resume);
-        logger.info("resume[ + id + ]=" + resume.toString());     
+        logger.info("resume[ + id + ]=" + resume.toString());
         
         // 10
         id = 10;
@@ -429,7 +429,7 @@ public class MFResumeTest {
         resume.setId(id);
         resume.setName("宗旭");
         objective = new MFObjective();
-        objective.setStatus(Constant.OBJECTIVE_STATUS_SEEK_JOB);
+        objective.setStatus(Constant.OBJECTIVE_STATUS_ON_JOB);
         objective.setPosition("项目经理，高级工程师");
         objective.setCategory("java");
         objective.setCity("北京 - 丰台");
@@ -439,6 +439,6 @@ public class MFResumeTest {
         workExp = new MFWorkExp();
         resume.setWorkExp(workExp);
         resume = mfResumeRepository.save(resume);
-        logger.info("resume[ + id + ]=" + resume.toString());           
+        logger.info("resume[ + id + ]=" + resume.toString());
     }
 }

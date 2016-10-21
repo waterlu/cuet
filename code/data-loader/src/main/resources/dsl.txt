@@ -1,0 +1,266 @@
+[dsl]
+GET /mofang/resume/1
+
+GET /mofang/resume/_search
+{
+  "query": {
+    "match": {
+      "objective.city": "北京"
+    }
+  }
+}
+
+GET /mofang/resume/_search
+{
+  "query": {
+    "term": {
+      "name": {
+        "value": "lixingxing"
+      }
+    }
+  }
+}
+
+GET /mofang/resume/_search
+{
+  "query": {
+    "term": {
+      "objective.position": {
+        "value": "工程师"
+      }
+    }
+  }
+}
+
+{
+  "query": {
+    "filtered": {
+      "query": {
+        "match": {
+          "objective.city": "北京"
+        }
+      },
+      "filter": {
+        "term": {
+          "education": 3
+        }
+      }
+    }
+  }
+}
+
+
+[alias]
+_aliases
+
+
+[mapping]
+GET /mofang/resume/_mapping
+{
+  "mofang": {
+    "mappings": {
+      "resume": {
+        "properties": {
+          "available": {
+            "type": "boolean",
+            "index": "no"
+          },
+          "birthDate": {
+            "type": "date",
+            "index": "no",
+            "format": "yyyy-MM-dd"
+          },
+          "education": {
+            "type": "short",
+            "index": "no"
+          },
+          "gender": {
+            "type": "short",
+            "index": "no"
+          },
+          "id": {
+            "type": "long"
+          },
+          "name": {
+            "type": "string",
+            "index": "not_analyzed"
+          },
+          "objective": {
+            "properties": {
+              "category": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "position": {
+                "type": "string"
+              },
+              "salary": {
+                "type": "long"
+              },
+              "status": {
+                "type": "long"
+              }
+            }
+          },
+          "objectvie": {
+            "properties": {
+              "category": {
+                "type": "string",
+                "analyzer": "jcseg_search"
+              },
+              "city": {
+                "type": "string",
+                "analyzer": "jcseg_search"
+              },
+              "position": {
+                "type": "string",
+                "analyzer": "jcseg_search"
+              },
+              "salary": {
+                "type": "short",
+                "index": "no"
+              },
+              "status": {
+                "type": "integer",
+                "index": "no"
+              }
+            }
+          },
+          "userId": {
+            "type": "long",
+            "index": "no"
+          },
+          "workExp": {
+            "type": "nested",
+            "properties": {
+              "company": {
+                "properties": {
+                  "desc": {
+                    "type": "string",
+                    "analyzer": "jcseg_search"
+                  },
+                  "name": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                  },
+                  "position": {
+                    "type": "string",
+                    "analyzer": "jcseg_search"
+                  }
+                }
+              },
+              "companyList": {
+                "properties": {
+                  "desc": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "position": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+[prepared]
+
+DELETE /mofang
+
+PUT /mofang
+{
+  "mappings": {
+    "resume": {
+      "properties": {
+        "userId": {
+          "type": "long",
+          "index": "no"
+        },
+        "name": {
+          "type": "string",
+          "index": "not_analyzed"
+        },
+        "gender": {
+          "type": "short",
+          "index": "not_analyzed"
+        },
+        "birthDate": {
+          "type": "date",
+          "index": "not_analyzed",
+          "format": "yyyy-MM-dd"
+        },
+        "education": {
+          "type": "short",
+          "index": "not_analyzed"
+        },
+        "available": {
+          "type": "boolean",
+          "index": "not_analyzed"
+        },
+        "objectvie": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "integer",
+              "index": "not_analyzed"
+            },
+            "category": {
+              "type": "string",
+              "index": "analyzed",
+              "analyzer": "jcseg_complex"
+            },
+            "position": {
+              "type": "string",
+              "index": "analyzed",
+              "analyzer": "jcseg_complex"
+            },
+            "salary": {
+              "type": "short",
+              "index": "no"
+            },
+            "city": {
+              "type": "string",
+              "index": "analyzed",
+              "analyzer": "jcseg_complex"
+            }
+          }
+        },
+        "workExp": {
+          "type": "nested",
+          "include_in_parent": true,
+          "properties": {
+            "company": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "index": "not_analyzed"
+                },
+                "desc": {
+                  "type": "string",
+                  "index": "analyzed",
+                  "analyzer": "jcseg_complex"
+                },
+                "position": {
+                  "type": "string",
+                  "index": "analyzed",
+                  "analyzer": "jcseg_complex"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
